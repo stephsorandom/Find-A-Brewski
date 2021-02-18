@@ -99,9 +99,12 @@ function Main() {
         <button type="submit">Search</button>
       </form>
       <div style={{ height: "400px", width: "50vw" }} ref={mapEle}></div>
-      <h1>{brewery.name}</h1>
+      <h1>{brewery.name} : {brewery.rating}★'s <br /></h1>
+      <h3>{brewery.formatted_address}<br />
+      {brewery.open_now}</h3>
+      
       <img
-        src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${brewery.photos?.[0].photo_reference}&sensor=false&maxheight=1500&maxwidth=1500&key=AIzaSyCnpg39_zOHWO0uvnnE842cs4RYy7da04c`}
+        src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${brewery.photos?.[0].photo_reference}&sensor=false&maxheight=500&maxwidth=500&key=AIzaSyCnpg39_zOHWO0uvnnE842cs4RYy7da04c`}
       />
     </div>
   );
