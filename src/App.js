@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link, BrowserRouter as Router, Switch} from 'react-router-dom'
 import './App.css';
-import Main from './Main'
+import Main from './Components/Main'
+// import Map from './Components/Map'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
     </Switch>
     </Router>*/}
   <Main />
+  {/* <Map /> */}
 
     </div>
   );
