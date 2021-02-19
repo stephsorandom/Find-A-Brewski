@@ -1,18 +1,11 @@
 body {
   background-image: linear-gradient(to right, grey, lightgray);
 }
-
-#coverpic {
-  opacity: 0.5;
-  /* background-size: cover;  */
-  width: 100%;
-  height: 20%;
+.pic {
+  width: 1175;
+  height:1604.5;
+  opacity: 0.5; 
+  /* background-size: cover; */
 }
 
-/* img {
-  opacity: 0.5;
-} */
-/* 
-#titlename {
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-} */
+@import url('https://fonts.googleapis.com/css?family=Warnes&display=swap');

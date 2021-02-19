@@ -8,6 +8,7 @@ function App() {
   return (
     <div>
   <p style={{fontSize:"50px", fontFamily:"fantasy", textShadow:"2px 2px 1px green", textAlign:"center"}}>Find a Brewski 🍺</p>
+  <img className="pic" src={"./images/1886667.jpg"} alt='pub' />
   <Main />
 {/* <Route path="/results" component={} />      */}
     </div>
