@@ -131,10 +131,11 @@ function Main() {
             {brewery.open_now}
           </h3>
         </div>
-        <img style={{position:"center"}}
+        <div style={{display:"flex", justifyContent:"center", marginBottom: "30px"}}>
+        <img
           src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${brewery.photos?.[0].photo_reference}&sensor=false&maxheight=500&maxwidth=500&key=AIzaSyCnpg39_zOHWO0uvnnE842cs4RYy7da04c`}
           alt="establishment "
-        />
+        /> </div>
       </div>
     </div>
   );
