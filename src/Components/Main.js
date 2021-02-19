@@ -18,7 +18,7 @@ function Main() {
   useEffect(() => {
     axios
       .get(
-        `http://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=brewery+in+${search}&key=AIzaSyCnpg39_zOHWO0uvnnE842cs4RYy7da04c`
+        `https://iron-cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=brewery+in+${search}&key=AIzaSyCnpg39_zOHWO0uvnnE842cs4RYy7da04c`
       )
       .then((res) => {
         console.log(res);
