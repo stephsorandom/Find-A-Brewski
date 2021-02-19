@@ -94,7 +94,7 @@ function Main() {
           width: "90vw",
           position: "center",
           marginLeft: "55px",
-          marginTop: "100px",
+          marginTop: "50px",
         }}
         ref={mapEle}
       ></div>
@@ -118,20 +118,20 @@ function Main() {
 
       <div>
         <div>
-          <h1>
+          <h1 style={{paddingTop: '10px', textAlign: "center"}}>
             {brewery.name} : {brewery.rating}★'s <br />
           </h1>
         </div>
         <div>
           {/* calls Name, Ratings, Address from googleMapPlaces */}
 
-          <h3>
+          <h3 style={{textAlign:"center", paddingBottom:"10px"}}>
             {brewery.formatted_address}
             <br />
             {brewery.open_now}
           </h3>
         </div>
-        <img
+        <img style={{position:"center"}}
           src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${brewery.photos?.[0].photo_reference}&sensor=false&maxheight=500&maxwidth=500&key=AIzaSyCnpg39_zOHWO0uvnnE842cs4RYy7da04c`}
           alt="establishment "
         />

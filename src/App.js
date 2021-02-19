@@ -7,7 +7,7 @@ import Main from './Components/Main'
 function App() {
   return (
     <div>
-  <h1 style={{fontFamily:"monospace", textShadow:"2px 2px 1px green"}}>Find a Brewski</h1>
+  <p style={{fontSize:"50px", fontFamily:"fantasy", textShadow:"2px 2px 1px green", textAlign:"center"}}>Find a Brewski</p>
   <Main />
 {/* <Route path="/results" component={} />      */}
     </div>
