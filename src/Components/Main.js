@@ -11,8 +11,8 @@ function Main() {
   const [search, setSearch] = useState("Miami");
   const [brewery, setBrewery] = useState({});
   const [coordinates, setCoordinates] = useState({
-    lat: 41.3977381,
-    lng: 2.190471916,
+    lat: 25.761681,
+    lng: -80.191788,
   });
   const [breweryLocations, setBreweryLocations] = useState([]);
   useEffect(() => {
@@ -87,29 +87,57 @@ function Main() {
   }
   return (
     <div>
-      <form onSubmit={updatesSearch}>
+      {/* map is drawn and styled */}
+      <div
+        style={{
+          height: "500px",
+          width: "90vw",
+          position: "center",
+          marginLeft: "55px",
+          marginTop: "100px",
+        }}
+        ref={mapEle}
+      ></div>
+      {/* searchbox is drawn under map */}
+      <form
+        style={{ display: "flex", justifyContent: "center" }}
+        onSubmit={updatesSearch}
+      >
         <input
+          style={{ borderRadius: "5px" }}
           type="text"
           name="search"
           placeholder="Search by city or zipcode"
-          // value={search}
           ref={searchBoxRef} //connects map
           onChange={(e) => handlesSearchInput(e)}
         />
-        <button type="submit">Search</button>
+        <button style={{ borderRadius: "5px" }} type="submit">
+          Search
+        </button>
       </form>
-      <div style={{ height: "400px", width: "50vw" }} ref={mapEle}></div>
-      <h1>{brewery.name} : {brewery.rating}★'s <br /></h1>
-      <h3>{brewery.formatted_address}<br />
-      {brewery.open_now}</h3>
-      
-      <img
-        src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${brewery.photos?.[0].photo_reference}&sensor=false&maxheight=500&maxwidth=500&key=AIzaSyCnpg39_zOHWO0uvnnE842cs4RYy7da04c`}
-      />
+
+      <div>
+        <div>
+          <h1>
+            {brewery.name} : {brewery.rating}★'s <br />
+          </h1>
+        </div>
+        <div>
+          {/* calls Name, Ratings, Address from googleMapPlaces */}
+
+          <h3>
+            {brewery.formatted_address}
+            <br />
+            {brewery.open_now}
+          </h3>
+        </div>
+        <img
+          src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${brewery.photos?.[0].photo_reference}&sensor=false&maxheight=500&maxwidth=500&key=AIzaSyCnpg39_zOHWO0uvnnE842cs4RYy7da04c`}
+          alt="establishment "
+        />
+      </div>
     </div>
   );
 }
-
-//use the places autocomplete to get a place and get the coordinates of said place and use the coordinates as an input in the brewery API to get a list of places
 
 export default Main;
