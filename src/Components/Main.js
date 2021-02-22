@@ -103,10 +103,12 @@ function Main() {
       <div
         style={{
           height: "500px",
-          width: "90vw",
+          width: "80vw",
           position: "center",
-          marginLeft: "55px",
+          marginLeft: "155px",
           marginTop: "50px",
+          display: "flex",
+          justifyContent: "center",
         }}
         ref={mapEle}
       ></div>
