@@ -8,7 +8,7 @@ function Main() {
   const mapEle = useRef(null);
   const searchBoxRef = useRef(null);
   const maps = useRef(null);
-  const [search, setSearch] = useState("Miami");
+  const [search, setSearch] = useState(null);
   const [brewery, setBrewery] = useState({});
   const [coordinates, setCoordinates] = useState({
     lat: 25.761681,
@@ -37,7 +37,6 @@ function Main() {
         var marker = new google.maps.Marker({
           position: brewery.geometry.location,
           title: brewery.name,
-          // icon: "🍺",
         });
 
         marker.addListener("click", (e) => {
@@ -54,17 +53,13 @@ function Main() {
     const ac = new google.maps.places.Autocomplete(input, {
       types: ["geocode"], //by city
     });
-    // console.log(ac)
-    // console.log(google)
+
     google.maps.event.addListener(ac, "place_changed", function (e) {
       const place = ac.getPlace();
       if (!place.formatted_address) {
         return;
       }
       setSearch(ac.getPlace().formatted_address);
-      //     console.log(ac)
-      // console.log(ac.getPlace(), e, ac.getPlace().geometry.location.lat(), ac.getPlace().geometry.location.lng())
-
       setCoordinates({
         lat: ac.getPlace().geometry.location.lat(),
         lng: ac.getPlace().geometry.location.lng(),
@@ -74,22 +69,18 @@ function Main() {
 
   const getBreweryData = async () => {
     let res = await fetch("");
-    //  console.log(response)
   };
   getBreweryData();
   const handlesSearchInput = (e) => {
     setSearch(e.target.value);
   };
-  // console.log(search)
+
   const updatesSearch = (e) => {
     e.preventDefault();
-    // setSearch(search); //updates search with each keystroke
-    //axios call
-    //setBrelocat..
   };
-  {
-    MapView();
-  }
+
+  MapView();
+
   return (
     <div>
       <form
@@ -120,34 +111,36 @@ function Main() {
         ref={mapEle}
       ></div>
       {/* searchbox is drawn under map */}
-      <div>
+      {search === null ? null : (
         <div>
-          <h1 style={{ paddingTop: "10px", textAlign: "center" }}>
-            {brewery.name} : {brewery.rating}★'s <br />
-          </h1>
-        </div>
-        <div>
-          {/* calls Name, Ratings, Address from googleMapPlaces */}
+          <div>
+            <h1 style={{ paddingTop: "10px", textAlign: "center" }}>
+              {brewery.name} : {brewery.rating}★'s <br />
+            </h1>
+          </div>
+          <div>
+            {/* calls Name, Ratings, Address from googleMapPlaces */}
 
-          <h3 style={{ textAlign: "center", paddingBottom: "10px" }}>
-            {brewery.formatted_address}
-            <br />
-            {brewery.open_now}
-          </h3>
+            <h3 style={{ textAlign: "center", paddingBottom: "10px" }}>
+              {brewery.formatted_address}
+              <br />
+              {brewery.open_now}
+            </h3>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "30px",
+            }}
+          >
+            <img
+              src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${brewery.photos?.[0].photo_reference}&sensor=false&maxheight=500&maxwidth=500&key=AIzaSyCnpg39_zOHWO0uvnnE842cs4RYy7da04c`}
+              alt=" "
+            />
+          </div>
         </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: "30px",
-          }}
-        >
-          <img
-            src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${brewery.photos?.[0].photo_reference}&sensor=false&maxheight=500&maxwidth=500&key=AIzaSyCnpg39_zOHWO0uvnnE842cs4RYy7da04c`}
-            alt=" "
-          />
-        </div>
-      </div>
+      )}
       )
     </div>
   );

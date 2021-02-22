@@ -8,12 +8,12 @@ function App() {
       <p
         style={{
           fontSize: "50px",
-          fontFamily: "fantasy",
+          // fontFamily: "fantasy",
           textShadow: "2px 2px 1px green",
           textAlign: "center",
         }}
       >
-        Find a Brewski 🍺
+        <b> Find a Brewski 🍺</b>
       </p>
 
       <Main />
