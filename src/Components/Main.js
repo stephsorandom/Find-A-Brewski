@@ -57,9 +57,14 @@ function Main() {
     // console.log(ac)
     // console.log(google)
     google.maps.event.addListener(ac, "place_changed", function (e) {
+      const place = ac.getPlace();
+      if (!place.formatted_address) {
+        return;
+      }
       setSearch(ac.getPlace().formatted_address);
       //     console.log(ac)
       // console.log(ac.getPlace(), e, ac.getPlace().geometry.location.lat(), ac.getPlace().geometry.location.lng())
+
       setCoordinates({
         lat: ac.getPlace().geometry.location.lat(),
         lng: ac.getPlace().geometry.location.lng(),
@@ -87,18 +92,6 @@ function Main() {
   }
   return (
     <div>
-      {/* map is drawn and styled */}
-      <div
-        style={{
-          height: "500px",
-          width: "90vw",
-          position: "center",
-          marginLeft: "55px",
-          marginTop: "50px",
-        }}
-        ref={mapEle}
-      ></div>
-      {/* searchbox is drawn under map */}
       <form
         style={{ display: "flex", justifyContent: "center" }}
         onSubmit={updatesSearch}
@@ -115,28 +108,47 @@ function Main() {
           Search
         </button>
       </form>
-
+      {/* map is drawn and styled */}
+      <div
+        style={{
+          height: "500px",
+          width: "90vw",
+          position: "center",
+          marginLeft: "55px",
+          marginTop: "50px",
+        }}
+        ref={mapEle}
+      ></div>
+      {/* searchbox is drawn under map */}
       <div>
         <div>
-          <h1 style={{paddingTop: '10px', textAlign: "center"}}>
+          <h1 style={{ paddingTop: "10px", textAlign: "center" }}>
             {brewery.name} : {brewery.rating}★'s <br />
           </h1>
         </div>
         <div>
           {/* calls Name, Ratings, Address from googleMapPlaces */}
 
-          <h3 style={{textAlign:"center", paddingBottom:"10px"}}>
+          <h3 style={{ textAlign: "center", paddingBottom: "10px" }}>
             {brewery.formatted_address}
             <br />
             {brewery.open_now}
           </h3>
         </div>
-        <div style={{display:"flex", justifyContent:"center", marginBottom: "30px"}}>
-        <img
-          src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${brewery.photos?.[0].photo_reference}&sensor=false&maxheight=500&maxwidth=500&key=AIzaSyCnpg39_zOHWO0uvnnE842cs4RYy7da04c`}
-          alt="establishment "
-        /> </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "30px",
+          }}
+        >
+          <img
+            src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${brewery.photos?.[0].photo_reference}&sensor=false&maxheight=500&maxwidth=500&key=AIzaSyCnpg39_zOHWO0uvnnE842cs4RYy7da04c`}
+            alt=" "
+          />
+        </div>
       </div>
+      )
     </div>
   );
 }

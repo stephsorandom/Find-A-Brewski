@@ -1,11 +1,7 @@
-body {
-  background-image: linear-gradient(to right, grey, lightgray);
+html {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("./images/background.jpg");
 }
-.pic {
-  width: 1175;
-  height:1604.5;
-  opacity: 0.5; 
-  /* background-size: cover; */
-}
-
-@import url('https://fonts.googleapis.com/css?family=Warnes&display=swap');
