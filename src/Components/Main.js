@@ -66,7 +66,7 @@ function Main() {
       });
     });
   }
-
+ 
   const getBreweryData = async () => {
     let res = await fetch("");
   };
