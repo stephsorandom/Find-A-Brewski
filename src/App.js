@@ -1,6 +1,9 @@
 import React from "react"
 import "./App.css"
 import Main from "./Components/Main"
+import Home from "./Components/Home"
+import {Switch, Route, Link} from 'react-router-dom'
+
 
 function App() {
   return (
@@ -15,7 +18,10 @@ function App() {
       >
         <b> Find a Brewski 🍺</b>
       </p>
-
+        <Home />
+        <Switch>
+          <Route exact path="/" render={(props) => <Home {...props} />} />
+        </Switch>
       <Main />
     </div>
   );
