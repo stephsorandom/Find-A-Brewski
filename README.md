@@ -1,4 +1,4 @@
-# Find a Brewski
+# Find A Brewski
 
 - This APP allows you to find the newest and hottest brewery spots anywhere near you! A simple search will pull up any brewery within a 10 mile radius.
 
